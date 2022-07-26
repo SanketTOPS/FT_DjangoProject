@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome | Save Userinfo</title>
+</head>
+<body bgcolor="lightblue">
+    <center><h1>Insert User Information</h1></center>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter Firstname" name="firstname"><br><br>
+        <input type="text" placeholder="Enter Lastname" name="lastname"><br><br>
+        <input type="email" placeholder="Enter Email" name="email"><br><br>
+        <input type="date" name="dob"><br><br>
+        <input type="number" placeholder="Enter Mobile" name="mobile"><br><br>
+        <textarea placeholder="Enter Address" name="address"></textarea><br><br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>
