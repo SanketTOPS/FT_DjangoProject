@@ -7,4 +7,5 @@ urlpatterns = [
   path('notes/',views.notes,name='notes'),
   path('about/',views.about,name='about'),
   path('contact/',views.contact,name='contact'),
+  path('userlogout/',views.userlogout,name='userlogout'),
 ]
