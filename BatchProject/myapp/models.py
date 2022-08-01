@@ -12,4 +12,13 @@ class signup_master(models.Model):
     city=models.CharField(max_length=20)
     zipcode=models.IntegerField()
 
+
+class mynotes(models.Model):
+    uploaded=models.DateTimeField(auto_now_add=True)
+    title=models.CharField(max_length=100)
+    cate=models.CharField(max_length=100)
+    myfiles=models.FileField(upload_to="MyFiles")
+    comments=models.TextField()
+
+
     
