@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import redirect, render
 from .forms import signupForm, notesForm
 from .models import signup_master
@@ -76,4 +77,13 @@ def updateprofile(request):
     user=request.session.get("user")
     userid=request.session.get("userid")
     uid=signup_master.objects.get(id=userid)
+    if request.method=="POST":
+        updateuser=signupForm(request.POST)
+        if updateuser.is_valid():
+            updateuser=signupForm(request.POST,instance=uid)
+            updateuser.save()
+            print("Your profile has been updated!")
+            return redirect("notes")
+        else:
+            print(updateuser.errors)
     return render(request,'updateprofile.html',{'user':user,"cuser":signup_master.objects.get(id=userid)})
