@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import redirect, render
-from .forms import signupForm, notesForm
+from .forms import signupForm, notesForm,contactForm
 from .models import signup_master
 from django.contrib.auth import logout
 
@@ -67,6 +67,13 @@ def about(request):
     return render(request,'about.html')
 
 def contact(request):
+    if request.method=="POST":
+        cont=contactForm(request.POST)
+        if cont.is_valid():
+            cont.save()
+            print("Your msg has been sent successfully!")
+        else:
+            print(cont.errors)
     return render(request,'contact.html')
 
 def userlogout(request):
