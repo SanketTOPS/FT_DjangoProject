@@ -20,5 +20,11 @@ class mynotes(models.Model):
     myfiles=models.FileField(upload_to="MyFiles")
     comments=models.TextField()
 
+class contact(models.Model):
+    name=models.CharField(max_length=20)
+    email=models.EmailField()
+    subject=models.CharField(max_length=20)
+    msg=models.TextField()
+
 
     
