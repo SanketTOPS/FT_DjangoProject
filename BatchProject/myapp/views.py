@@ -5,6 +5,9 @@ from .models import signup_master
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from BatchProject import settings
+import requests
+import json
+import random
 
 # Create your views here.
 """
@@ -36,10 +39,23 @@ def index(request):
 
             userid=signup_master.objects.get(username=unm)
             print("UserID:",userid.id)
+
+            
             if user:
                 print("Login Successfull!")
                 request.session["user"]=unm
                 request.session["userid"]=userid.id
+
+                # Send SMS Code
+                otp=random.randint(1111,9999)
+                url = "https://www.fast2sms.com/dev/bulkV2"
+                querystring = {"authorization":"PSqGhvu5BkQv1WEvvWH6PIgV0vr1IcOIEzgsN1fZMHFG0WJapJ1hGGIwYfq8","message":f"Hello User, Your account has been login!\n Your OTP is {otp}","language":"english","route":"q","numbers": "7990341676,9426913979,9316312117"}
+
+                headers = {
+                    'cache-control': "no-cache"
+                }
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                print(response.text)
                 return redirect("notes")
             else:
                 print("Error...Login fail! Try again.")
