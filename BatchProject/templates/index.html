@@ -84,7 +84,7 @@
                         <!-- <button type="submit" name="login" value="login" class="btn btn-primary">Login</button> -->
                         <div class="d-grid gap-2">
                             <button class="btn btn-primary" name="login" value="login" type="submit">Login</button>
-                            <a href="" class="btn btn-primary" type="button">Login with Facebook</a>
+                            <a href="{% provider_login_url 'facebook' %}" class="btn btn-primary" type="button">Login with Facebook</a>
                             <a href="{% provider_login_url 'google' %}" class="btn btn-danger" type="button">Login with Gmail</a>
                           </div>
                     </form>
